@@ -1,13 +1,11 @@
 package com.afirez.knight
 
 import android.app.Application
-import org.kodein.di.Kodein
+import android.util.Log
 
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
-
+        Log.i("aspectApp", "Application.onCreate")
     }
-
-
 }
