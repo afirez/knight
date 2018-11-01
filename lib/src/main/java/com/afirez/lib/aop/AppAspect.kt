@@ -1,18 +1,22 @@
 package com.afirez.lib.aop
 
 import android.util.Log
+
+import com.afirez.lib.User
+import com.afirez.lib.lib
 import org.aspectj.lang.ProceedingJoinPoint
 import org.aspectj.lang.annotation.Around
 import org.aspectj.lang.annotation.Aspect
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
-import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
-import org.kodein.di.generic.singleton
 
 @Aspect
 class AppAspect : KodeinAware {
-    override val kodein: Kodein = Kodein.lazy { bind<User>(tag = "user") with singleton { User() } }
+    override val kodein: Kodein = Kodein.lazy {
+        import(lib)
+//        bind<User>(tag = "user") with singleton { User() }
+    }
 
     val user: User by instance(tag = "user")
 

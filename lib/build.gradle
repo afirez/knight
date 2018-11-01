@@ -33,7 +33,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     api 'org.aspectj:aspectjrt:1.8.9'
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'org.kodein.di:kodein-di-generic-jvm:5.3.0'
     implementation "org.kodein.di:kodein-di-framework-android-core:5.3.0"
 
