@@ -1,4 +1,4 @@
-package com.afirez.lib.aop
+package com.afirez.lib
 
 data class User(var name:String = "afirez") {
     override fun toString(): String {
