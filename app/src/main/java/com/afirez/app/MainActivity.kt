@@ -1,4 +1,4 @@
-package com.afirez.knight
+package com.afirez.app
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.afirez.knight
+package com.afirez.app
 
 import org.junit.Test
 

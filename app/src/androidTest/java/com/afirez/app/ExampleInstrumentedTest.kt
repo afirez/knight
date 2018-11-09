@@ -1,4 +1,4 @@
-package com.afirez.knight
+package com.afirez.app
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
