@@ -1,23 +1,14 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'kodein-versions'
-apply plugin: 'android-aspectjx'
+ext.alwaysLib=true
+apply from: rootProject.file("build-base.gradle")
 
 android {
-    compileSdkVersion 27
-
-
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        if (project.ext.runAsApp) {
+            applicationId "com.afirez.lib"
+            versionCode = rootProject.ext.android["versionCode"]
+            versionName rootProject.ext.android["versionName"]
+        }
     }
 
     buildTypes {
@@ -26,24 +17,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
-aspectjx {
-//排除所有package路径中包含`android.support`的class文件及库（jar文件）
-    exclude 'android'
-}
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'org.aspectj:aspectjrt:1.8.9'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'org.kodein.di:kodein-di-generic-jvm:5.3.0'
-    implementation "org.kodein.di:kodein-di-framework-android-core:5.3.0"
-
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }

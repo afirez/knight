@@ -1,1 +1,4 @@
-include ':app', ':lib', ':biz'
+include ':app',
+        ':knight-core',
+        ':lib'
+
