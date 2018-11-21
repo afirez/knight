@@ -25,7 +25,7 @@ import timber.log.Timber
 import java.io.File
 
 val core = Kodein.Module("core") {
-    bind(tag = "any") from setBinding<Any>()
+//    bind(tag = "any") from setBinding<Any>()
     bind() from setBinding<AppLike>()
     bind<Application.ActivityLifecycleCallbacks>(tag = "internal") with singleton { ActivityLike() }
     bind<FragmentManager.FragmentLifecycleCallbacks>(tag = "internal") with singleton { FragmentLike() }
@@ -42,9 +42,7 @@ val core = Kodein.Module("core") {
     bind<Gson>() with singleton {
         val gsonBuilder: GsonBuilder by kodein.instance()
         val buildGsons: Set<BuildGson> by kodein.instance()
-        buildGsons.forEach {
-            it.buildGson(instance(), gsonBuilder)
-        }
+        buildGsons.forEach { it.buildGson(instance(), gsonBuilder) }
         gsonBuilder.create()
     }
 
@@ -52,9 +50,7 @@ val core = Kodein.Module("core") {
     bind<OkHttpClient>() with singleton {
         val okHttpClientBuilder: OkHttpClient.Builder by kodein.instance()
         val buildOkHttpClients: Set<BuildOkHttpClient> by kodein.instance()
-        buildOkHttpClients.forEach {
-            it.buildOkHttpClient(instance(), okHttpClientBuilder)
-        }
+        buildOkHttpClients.forEach { it.buildOkHttpClient(instance(), okHttpClientBuilder) }
         okHttpClientBuilder.build()
     }
 
@@ -62,9 +58,7 @@ val core = Kodein.Module("core") {
     bind<Retrofit>() with singleton {
         val retrofitBuilder: Retrofit.Builder by kodein.instance()
         val buildRetrofits: Set<BuildRetrofit> by kodein.instance()
-        buildRetrofits.forEach {
-            it.buildRetrofit(instance(), retrofitBuilder)
-        }
+        buildRetrofits.forEach { it.buildRetrofit(instance(), retrofitBuilder) }
         retrofitBuilder.build()
     }
 
@@ -74,9 +68,7 @@ val core = Kodein.Module("core") {
         val rxCacheDir: File by kodein.instance("rxCache")
         val rxCacheBuilder: RxCache.Builder by kodein.instance()
         val buildRxCaches: Set<BuildRxCache> by kodein.instance()
-        buildRxCaches.forEach {
-            it.buildRxCache(instance(), rxCacheBuilder)
-        }
+        buildRxCaches.forEach { it.buildRxCache(instance(), rxCacheBuilder) }
         rxCacheBuilder.persistence(rxCacheDir, instance())
     }
 }
@@ -105,8 +97,10 @@ class AppAspect {
     @Throws(Throwable::class)
     fun aopBuildKodein(joinPoint: ProceedingJoinPoint) {
         val builder = joinPoint.args[0] as Kodein.MainBuilder
+
         builder.import(core)
         builder.import(internal)
+
         joinPoint.proceed()
         Timber.i("<<---- buildKodin")
     }

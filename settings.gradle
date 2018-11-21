@@ -1,4 +1,5 @@
-include ':app',
+include ':app', ':app-video', ':app-stream', ':app-weex',
+        ':app-audio',
         ':app-opengles',
         ':knight-core',
         ':lib'

@@ -1,0 +1,27 @@
+ext.mainApp = true
+apply from: rootProject.file("build-base.gradle")
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+
+    defaultConfig {
+        if (project.ext.runAsApp) {
+            applicationId "com.afirez.app.audio"
+            versionCode = rootProject.ext.android["versionCode"]
+            versionName rootProject.ext.android["versionName"]
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+}

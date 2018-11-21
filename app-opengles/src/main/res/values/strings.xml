@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">app-opengles</string>
+    <string name="gl_app_name">App OpenGL</string>
+    <string name="app_name">App OpenGL</string>
 </resources>
