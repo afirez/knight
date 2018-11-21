@@ -1,0 +1,31 @@
+ext.alwaysLib=true
+apply from: rootProject.file("build-base.gradle")
+
+android {
+
+    defaultConfig {
+        if (project.ext.runAsApp) {
+            applicationId "com.afirez.lib.player"
+            versionCode = rootProject.ext.android["versionCode"]
+            versionName rootProject.ext.android["versionName"]
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+dependencies {
+
+}

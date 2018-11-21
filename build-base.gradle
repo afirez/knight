@@ -36,9 +36,10 @@ android {
             multiDexEnabled true
             renderscriptTargetApi 19
             renderscriptSupportModeEnabled true
-            ndk {
-                abiFilters 'armeabi-v7a', "x86"
-            }
+        }
+
+        ndk {
+            abiFilters /*"armeabi-v7a",*/ "x86"
         }
     }
 

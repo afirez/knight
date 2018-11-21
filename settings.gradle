@@ -1,6 +1,11 @@
-include ':app', ':app-video', ':app-stream', ':app-weex',
+include ':app',
         ':app-audio',
+        ':app-video',
+        ':app-stream',
         ':app-opengles',
-        ':knight-core',
-        ':lib'
+        ':app-weex',
+        ':lib-player',
+        ':lib',
+        ':knight-core'
+
 

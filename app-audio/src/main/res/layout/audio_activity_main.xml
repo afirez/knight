@@ -7,4 +7,36 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
+
+    <ScrollView
+            android:id="@+id/svAudio"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+        <LinearLayout
+                android:id="@+id/llAudio"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <Button
+                    android:text="Hello World"
+                    android:id="@+id/btnHelloWorld"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            <Button
+                    android:text="Producer Customer"
+                    android:id="@+id/btnProducerCustomer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <Button
+                    android:text="C++ Callback Java"
+                    android:id="@+id/btnCppCallbackJava"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>

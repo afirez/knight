@@ -17,13 +17,12 @@ endif (${ANDROID_PLATFORM_LEVEL} LESS 11)
 add_library(
   triangle
   SHARED
-        src/main/cpp/gl_utils.cpp
-        src/main/cpp/triangle.cpp)
+  src/main/cpp/gl_utils.cpp
+  src/main/cpp/triangle.cpp)
 
 target_link_libraries(
   triangle
   ${OPENGL_LIB}
   android
   EGL
-  log
-  m)
+  log)
