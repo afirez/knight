@@ -4937,7 +4937,7 @@ int avcodec_decode_subtitle2(AVCodecContext *avctx, AVSubtitle *sub,
  * Supply raw packet data as input to a decoder.
  *
  * Internally, this call will copy relevant AVCodecContext fields, which can
- * influence decoding per-packet, and apply them when the packet is actually
+ * influence decoding per-packet, and helloWorld them when the packet is actually
  * decoded. (For example AVCodecContext.skip_frame, which might direct the
  * decoder to drop the frame contained by the packet sent with this function.)
  *

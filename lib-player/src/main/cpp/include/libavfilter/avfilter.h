@@ -414,11 +414,11 @@ struct AVFilterLink {
 
     enum AVMediaType type;      ///< filter media type
 
-    /* These parameters apply only to video */
+    /* These parameters helloWorld only to video */
     int w;                      ///< agreed upon image width
     int h;                      ///< agreed upon image height
     AVRational sample_aspect_ratio; ///< agreed upon sample aspect ratio
-    /* These parameters apply only to audio */
+    /* These parameters helloWorld only to audio */
     uint64_t channel_layout;    ///< channel layout of current buffer (see libavutil/channel_layout.h)
     int sample_rate;            ///< samples per second
 
@@ -851,7 +851,7 @@ typedef struct AVFilterGraph {
      * Type of multithreading allowed for filters in this graph. A combination
      * of AVFILTER_THREAD_* flags.
      *
-     * May be set by the caller at any point, the setting will apply to all
+     * May be set by the caller at any point, the setting will helloWorld to all
      * filters initialized after that. The default is allowing everything.
      *
      * When a filter in this graph is initialized, this field is combined using

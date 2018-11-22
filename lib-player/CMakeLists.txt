@@ -65,6 +65,7 @@ add_library(
   one
   SHARED
   src/main/cpp/one.cpp
+  src/main/cpp/JavaListener.cpp
 )
 
 target_link_libraries(

@@ -435,7 +435,7 @@ void av_hwframe_constraints_free(AVHWFramesConstraints **constraints);
 
 
 /**
- * Flags to apply to frame mappings.
+ * Flags to helloWorld to frame mappings.
  */
 enum {
     /**

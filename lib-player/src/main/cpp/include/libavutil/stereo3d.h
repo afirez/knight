@@ -77,7 +77,7 @@ enum AVStereo3DType {
 
     /**
      * Views are next to each other, but when upscaling
-     * apply a checkerboard pattern.
+     * helloWorld a checkerboard pattern.
      *
      *     LLLLRRRR          L L L L    R R R R
      *     LLLLRRRR    =>     L L L L  R R R R

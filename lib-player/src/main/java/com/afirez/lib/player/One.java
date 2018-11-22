@@ -13,7 +13,25 @@ public class One {
         System.loadLibrary("swscale-4");
     }
 
-    public static native String apply();
+    public native String helloWorld();
 
-    public static native String producerCustomer();
+    public native String producerCustomer();
+
+    public native String callbackFromC();
+
+    public void onError(int code, String msg) {
+        if (onErrorListener != null) {
+            onErrorListener.onError(code, msg);
+        }
+    }
+
+    private OnErrorListener onErrorListener;
+
+    public void setOnErrorListener(OnErrorListener onErrorListener) {
+        this.onErrorListener = onErrorListener;
+    }
+
+    public interface OnErrorListener {
+        void onError(int code, String msg);
+    }
 }

@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"/>
 
             <Button
-                    android:text="C++ Callback Java"
+                    android:text="Callback From C++"
                     android:id="@+id/btnCppCallbackJava"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
