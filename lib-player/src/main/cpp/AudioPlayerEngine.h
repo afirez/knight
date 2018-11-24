@@ -8,6 +8,8 @@
 
 #include <pthread.h>
 #include "CallOnPrepared.h"
+#include "AudioPlayerStatus.h"
+#include "AudioFrameQueue.h"
 
 extern "C" {
 #include <libavformat/avformat.h>
@@ -19,15 +21,20 @@ public:
 
     CallOnPrepared *callOnPrepared;
 
-    pthread_t decodeThread;
+    AudioPlayerStatus *status;
+
+    pthread_t audioDecodeThread;
 
     AVFormatContext *formatContext = NULL;
 
-    int streamIndex = -1;
-    AVStream *stream  = NULL;
+    int audioStreamIndex = -1;
+    AVStream *audioStream  = NULL;
 
-    AVCodec *codec = NULL;
-    AVCodecContext *codecContext = NULL;
+    AVCodec *audioCodec = NULL;
+    AVCodecContext *audioCodecContext = NULL;
+
+    AudioFrameQueue *audioFrameQueue;
+
 
 public:
     AudioPlayerEngine(const char *url, CallOnPrepared *callOnPrepared);

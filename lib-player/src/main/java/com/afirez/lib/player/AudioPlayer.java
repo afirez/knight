@@ -38,6 +38,7 @@ public class AudioPlayer {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                Thread.currentThread().setName("prepare");
                 prepareN(dataSource);
             }
         }).start();
@@ -51,6 +52,7 @@ public class AudioPlayer {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                Thread.currentThread().setName("start");
                 startN();
             }
         }).start();
@@ -69,4 +71,11 @@ public class AudioPlayer {
     public interface OnPreparedListener {
         void onPrepared();
     }
+
+
+    public void playPcm(String url){
+        playPcmN(url);
+    }
+
+    public native void playPcmN(String url);
 }
