@@ -66,6 +66,9 @@ add_library(
   SHARED
   src/main/cpp/one.cpp
   src/main/cpp/JavaListener.cpp
+  src/main/cpp/audio_player.cpp
+  src/main/cpp/AudioPlayerEngine.cpp
+  src/main/cpp/CallOnPrepared.cpp
 )
 
 target_link_libraries(
