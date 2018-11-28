@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         if (project.ext.runAsApp) {
-            applicationId "com.afirez.app.audio"
+            applicationId "com.afirez.app.weex"
             versionCode = rootProject.ext.android["versionCode"]
             versionName rootProject.ext.android["versionName"]
         }
@@ -23,5 +23,6 @@ android {
 
 dependencies {
 
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.alibaba:fastjson:1.2.9'
+    implementation 'com.taobao.android:weex_sdk:0.16.0@aar'
 }
