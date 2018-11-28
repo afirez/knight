@@ -66,12 +66,18 @@ add_library(
   SHARED
   src/main/cpp/one.cpp
   src/main/cpp/JavaListener.cpp
+  src/main/cpp/audio_player.cpp
+  src/main/cpp/AudioPlayerEngine.cpp
+  src/main/cpp/CallOnPrepared.cpp
+  src/main/cpp/AudioFrameQueue.cpp
+  src/main/cpp/AudioPlayerStatus.cpp
 )
 
 target_link_libraries(
   one
   android
   log
+  OpenSLES
   avcodec-57
   avdevice-57
   avfilter-6

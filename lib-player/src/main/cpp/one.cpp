@@ -4,15 +4,10 @@
 
 #include <jni.h>
 
-#include <android/log.h>
 #include <pthread.h>
 #include <unistd.h>
 
-
-#define LOG_TAG "ONE"
-#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
-#define LOGW(...) __android_log_print(ANDROID_LOG_WAN, LOG_TAG, __VA_ARGS__)
-#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
+#include "android_log.h"
 
 extern "C" {
 #include <libavformat/avformat.h>
@@ -123,14 +118,14 @@ Java_com_afirez_lib_player_One_callbackFromC(JNIEnv *env, jobject jobj) {
     return env->NewStringUTF("Callback From C");
 }
 
-JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
-    JNIEnv *env;
-    jvm = vm;
-
-    if(vm->GetEnv((void **)(&env), JNI_VERSION_1_6) != JNI_OK) {
-        return -1;
-    }
-
-    return JNI_VERSION_1_6;
-}
+//JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
+//    JNIEnv *env;
+//    jvm = vm;
+//
+//    if(vm->GetEnv((void **)(&env), JNI_VERSION_1_6) != JNI_OK) {
+//        return -1;
+//    }
+//
+//    return JNI_VERSION_1_6;
+//}
 

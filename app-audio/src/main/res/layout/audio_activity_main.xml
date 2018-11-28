@@ -37,6 +37,25 @@
                     android:id="@+id/btnCppCallbackJava"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+
+            <Button
+                    android:text="Audio Player Prepare"
+                    android:id="@+id/btnAudioPlayerPrepare"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <Button
+                    android:text="Audio Player Start"
+                    android:id="@+id/btnAudioPlayerStart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <Button
+                    android:text="Audio Player Play Pcm"
+                    android:id="@+id/btnAudioPlayerPlayPcm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>
