@@ -1,4 +1,7 @@
 include ':app',
+        ':app-apt',
+        ':lib-apt-api',
+        ':lib-apt-compiler',
         ':app-audio',
         ':app-video',
         ':app-stream',
