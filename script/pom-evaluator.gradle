@@ -1,0 +1,20 @@
+apply from: rootProject.file("script/gradle-mvn-upload.gradle")
+afterEvaluate {
+    uploadArchives {
+        repositories {
+            mavenInstaller {
+                pom {
+                    groupId = rootProject.groupId
+                    version = rootProject.versionName
+
+                    whenConfigured { pom ->
+                        pom.dependencies.findAll { dep -> dep.groupId == rootProject.name }.collect { dep ->
+                            dep.groupId = pom.groupId = rootProject.groupId
+                            dep.version = pom.version = rootProject.versionName
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
