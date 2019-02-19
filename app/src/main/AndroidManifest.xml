@@ -19,7 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.afirez.app.ui.CustomRecyclerViewActivity">
+        <activity android:name=".ui.CustomRecyclerViewActivity">
+        </activity>
+        <activity android:name=".ui.LazyViewPagerActivity">
+        </activity>
+        <activity android:name=".ui.LazyActivity">
         </activity>
     </application>
 

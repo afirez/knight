@@ -1,5 +1,7 @@
 ext.mainApp = true
 apply from: rootProject.file("build-base.gradle")
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
 

@@ -25,6 +25,17 @@
                     android:id="@+id/btnCumtomLayoutManager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+            <Button
+                    android:text="LazyViewPagerFragment"
+                    android:id="@+id/btnLazyViewPagerFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <Button
+                    android:text="LazyFragment"
+                    android:id="@+id/btnLazyFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
         </LinearLayout>
     </ScrollView>
 
