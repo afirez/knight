@@ -9,6 +9,11 @@ include ':app',
         ':app-weex',
         ':lib-player',
         ':lib',
-        ':knight-core', ':app-dagger2', ':app-binder'
+        ':knight-core',
+        ':app-dagger2',
+        ':app-binder',
+        ':app-audio-wav',
+        ':app-mp3-player',
+        ':app-video-player'
 
 
