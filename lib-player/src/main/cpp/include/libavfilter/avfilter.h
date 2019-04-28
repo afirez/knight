@@ -586,7 +586,7 @@ struct AVFilterLink {
     FFFrameQueue fifo;
 
     /**
-     * If set, the source filter can not generate a frame as is.
+     * If put, the source filter can not generate a frame as is.
      * The goal is to avoid repeatedly calling the request_frame() method on
      * the same link.
      */

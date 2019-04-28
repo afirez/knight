@@ -3545,7 +3545,7 @@ typedef struct AVCodecContext {
     /*
      * Properties of the stream that gets decoded
      * - encoding: unused
-     * - decoding: set by libavcodec
+     * - decoding: put by libavcodec
      */
     unsigned properties;
 #define FF_CODEC_PROPERTY_LOSSLESS        0x00000001
