@@ -21,6 +21,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <Button
+                    android:text="RxTouch"
+                    android:id="@+id/btnRxTouch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            <Button
                     android:text="Custom LayoutManager"
                     android:id="@+id/btnCumtomLayoutManager"
                     android:layout_width="match_parent"
@@ -30,10 +35,14 @@
                     android:id="@+id/btnLazyViewPagerFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
             <Button
                     android:text="LazyFragment"
                     android:id="@+id/btnLazyFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            <Button
+                    android:text="WebFragment"
+                    android:id="@+id/btnWebFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
         </LinearLayout>
