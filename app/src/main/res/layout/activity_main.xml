@@ -41,8 +41,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             <Button
-                    android:text="WebFragment"
-                    android:id="@+id/btnWebFragment"
+                    android:text="智能诊断"
+                    android:id="@+id/btnWebFragment1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            <Button
+                    android:text="智能问药"
+                    android:id="@+id/btnWebFragment2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
         </LinearLayout>

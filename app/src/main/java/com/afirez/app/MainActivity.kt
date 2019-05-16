@@ -27,8 +27,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this@MainActivity, LazyActivity::class.java))
         }
 
-        btnWebFragment.setOnClickListener {
-            startActivity(Intent(this@MainActivity, WebActivity::class.java))
+        btnWebFragment1.setOnClickListener {
+            startActivity(Intent(this@MainActivity, WebActivity::class.java).apply {
+                putExtra("type", 0)
+            })
+        }
+
+        btnWebFragment2.setOnClickListener {
+            startActivity(Intent(this@MainActivity, WebActivity::class.java).apply {
+                putExtra("type", 1)
+            })
         }
     }
 }

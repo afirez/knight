@@ -7,8 +7,9 @@ import com.afirez.app.WebFragment
 
 class WebActivity : AppCompatActivity() {
 
-    val url = "https://robot-lib-achieve.zuoshouyisheng.com/?app_id=5cc197e8b60c48171066f0e7"
-    val url1 = "http://192.168.200.25:8080/index"
+    val url = "http://192.168.200.25:8080/index"
+    val url0 = "https://robot-lib-achieve.zuoshouyisheng.com/?app_id=5cc197e8b60c48171066f0e7"
+    val url1 = "https://robot-lib-achieve.zuoshouyisheng.com/?app_id=5cd3d5cbb60c48343fafe493"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +24,13 @@ class WebActivity : AppCompatActivity() {
             fm
                 .beginTransaction().add(android.R.id.content, WebFragment().apply {
                     arguments = Bundle().apply {
-                        putString("url", url1)
+                        val type = intent.getIntExtra("type", 0)
+                        val url = if(type == 0) {
+                            url0
+                        } else {
+                            url1
+                        }
+                        putString("url", url)
                     }
                 })
                 .commit()

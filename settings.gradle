@@ -14,6 +14,7 @@ include ':app',
         ':app-binder',
         ':app-audio-wav',
         ':app-mp3-player',
-        ':app-video-player'
+        ':app-video-player',
+        ':x5webview'
 
 

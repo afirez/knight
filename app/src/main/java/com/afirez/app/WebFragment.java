@@ -9,8 +9,10 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 /**
  * A fragment that displays a WebView.
@@ -42,9 +44,19 @@ public class WebFragment extends LazyFragment {
         if (mWebView != null) {
             mWebView.destroy();
         }
-        mWebView = new WebView(getContext());
+        View view = inflater.inflate(R.layout.fragment_web, container, false);
+        mWebView = view.findViewById(R.id.webView);
+        view.findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentActivity activity = getActivity();
+                if (activity != null) {
+                    activity.finish();
+                }
+            }
+        });
         mIsWebViewAvailable = true;
-        return mWebView;
+        return view;
     }
 
     @Override
@@ -56,11 +68,25 @@ public class WebFragment extends LazyFragment {
 
             WebSettings settings = webView.getSettings();
             settings.setJavaScriptEnabled(true);
-
-            settings.setUseWideViewPort(true);
+            settings.setDomStorageEnabled(true);
             settings.setLoadWithOverviewMode(true);
+            settings.setTextZoom(100);
+            settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
+            settings.setSupportZoom(true);
+            settings.setBuiltInZoomControls(true);
+            settings.setUseWideViewPort(true);
+            settings.setSupportMultipleWindows(false);
 
             webView.loadUrl(url);
+            webView.setWebViewClient(new WebViewClient() {
+                @Override
+                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                    // 在APP内部打开链接，不要调用系统浏览器
+                    view.loadUrl(url);
+                    return true;
+                }
+            });
+            webView.setWebChromeClient(new WebChromeClient());
         }
     }
 
