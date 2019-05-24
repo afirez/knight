@@ -20,6 +20,13 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+            <Button
+                    android:text="Recycler Banner"
+                    android:id="@+id/btnRecyclerBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
             <Button
                     android:text="RxTouch"
                     android:id="@+id/btnRxTouch"

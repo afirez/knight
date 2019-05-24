@@ -11,6 +11,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        btnRecyclerBanner.setOnClickListener {
+            startActivity(Intent(this@MainActivity, RecyclerBannerActivity::class.java))
+        }
+
         btnRxTouch.setOnClickListener {
             startActivity(Intent(this@MainActivity, RxTouchActivity::class.java))
         }

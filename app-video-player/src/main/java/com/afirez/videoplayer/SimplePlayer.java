@@ -1,4 +1,4 @@
-package com.example.videoplayer;
+package com.afirez.videoplayer;
 
 import android.media.AudioFormat;
 import android.media.AudioManager;

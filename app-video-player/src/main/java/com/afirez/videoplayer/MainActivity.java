@@ -1,4 +1,4 @@
-package com.example.videoplayer;
+package com.afirez.videoplayer;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
