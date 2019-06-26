@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.MotionEventActivity">
+
+    <com.afirez.app.ui.MotionParentLayout
+            android:id="@+id/parent"
+            app:layout_constraintBottom_toTopOf="@+id/btnParentIntercept"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+
+        <com.afirez.app.ui.MotionChildLayout
+                android:id="@+id/child"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="0dp">
+
+        </com.afirez.app.ui.MotionChildLayout>
+
+    </com.afirez.app.ui.MotionParentLayout>
+
+
+    <Button
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/btnParentIntercept"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"/>
+    <Button
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/btnParentIntercept"
+            android:id="@+id/btnChildDisallowIntercept"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"/>
+</android.support.constraint.ConstraintLayout>

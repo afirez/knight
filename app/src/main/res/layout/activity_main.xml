@@ -21,6 +21,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <Button
+                    android:text="Motion Event"
+                    android:id="@+id/btnMotionEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            <Button
                     android:text="RxTouch"
                     android:id="@+id/btnRxTouch"
                     android:layout_width="match_parent"

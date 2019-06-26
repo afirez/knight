@@ -23,7 +23,7 @@ class WebActivity : AppCompatActivity() {
             fm
                 .beginTransaction().add(android.R.id.content, WebFragment().apply {
                     arguments = Bundle().apply {
-                        putString("url", url1)
+                        putString("url", url)
                     }
                 })
                 .commit()

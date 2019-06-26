@@ -11,6 +11,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        btnMotionEvent.setOnClickListener {
+            startActivity(Intent(this@MainActivity, MotionEventActivity::class.java))
+        }
+
         btnRxTouch.setOnClickListener {
             startActivity(Intent(this@MainActivity, RxTouchActivity::class.java))
         }
