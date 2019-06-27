@@ -12,8 +12,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         btnMotionEvent.setOnClickListener {
             startActivity(Intent(this@MainActivity, MotionEventActivity::class.java))
+        }
+        btnRecyclerBanner.setOnClickListener {
+            startActivity(Intent(this@MainActivity, RecyclerBannerActivity::class.java))
         }
 
         btnRxTouch.setOnClickListener {
@@ -32,8 +36,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this@MainActivity, LazyActivity::class.java))
         }
 
-        btnWebFragment.setOnClickListener {
-            startActivity(Intent(this@MainActivity, WebActivity::class.java))
+        btnWebFragment1.setOnClickListener {
+            startActivity(Intent(this@MainActivity, WebActivity::class.java).apply {
+                putExtra("type", 0)
+            })
+        }
+
+        btnWebFragment2.setOnClickListener {
+            startActivity(Intent(this@MainActivity, WebActivity::class.java).apply {
+                putExtra("type", 1)
+            })
         }
     }
 }

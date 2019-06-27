@@ -99,7 +99,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     if ("knight-core" != project.name) {
-        implementation project(":knight-core")
+        api project(":knight-core")
     }
 
     implementation rootProject.ext.dependencies["multidex"]
