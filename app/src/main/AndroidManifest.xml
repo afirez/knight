@@ -13,6 +13,7 @@
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ui.MotionEventActivity">
+        </activity>
         <activity android:name=".ui.RecyclerBannerActivity">
         </activity>
         <activity android:name=".ui.RxTouchActivity">
