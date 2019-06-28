@@ -1,6 +1,6 @@
 package com.afirez.app.ui;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 /**

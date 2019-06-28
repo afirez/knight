@@ -1,9 +1,9 @@
 package com.afirez.app.ui
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentStatePagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.afirez.app.LazyFragment
 import com.afirez.app.R
 import kotlinx.android.synthetic.main.activity_lazy_view_pager.*

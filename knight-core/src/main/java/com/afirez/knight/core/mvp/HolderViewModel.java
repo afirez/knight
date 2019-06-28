@@ -1,6 +1,6 @@
 package com.afirez.knight.core.mvp;
 
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel;
 
 import java.util.Map;
 import java.util.Set;

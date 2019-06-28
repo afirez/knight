@@ -1,6 +1,6 @@
 package com.afirez.app.opengles
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.opengl.GLSurfaceView
 import javax.microedition.khronos.egl.EGLConfig

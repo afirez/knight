@@ -1,6 +1,6 @@
 package com.afirez.knight.core.api
 
-import android.arch.persistence.room.RoomDatabase
+import androidx.room.RoomDatabase
 import android.content.Context
 
 interface BuildRoomDb<DB: RoomDatabase> {

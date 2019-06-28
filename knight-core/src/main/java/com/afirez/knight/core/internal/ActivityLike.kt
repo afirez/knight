@@ -3,8 +3,8 @@ package com.afirez.knight.core.internal
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import com.afirez.knight.core.appKodein
 import org.kodein.di.generic.instance
 import timber.log.Timber
@@ -12,10 +12,10 @@ import timber.log.Timber
 internal class ActivityLike: Application.ActivityLifecycleCallbacks {
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle) {
         Timber.i("onActivityCreated: %s %s", activity, savedInstanceState)
-        if (activity is FragmentActivity) {
+        if (activity is androidx.fragment.app.FragmentActivity) {
             val fm = activity.supportFragmentManager
-            val fragmentLiKe: FragmentManager.FragmentLifecycleCallbacks by activity.appKodein().instance()
-            val fragmentLiKes: Set<FragmentManager.FragmentLifecycleCallbacks> by activity.appKodein().instance()
+            val fragmentLiKe: androidx.fragment.app.FragmentManager.FragmentLifecycleCallbacks by activity.appKodein().instance()
+            val fragmentLiKes: Set<androidx.fragment.app.FragmentManager.FragmentLifecycleCallbacks> by activity.appKodein().instance()
             fm.registerFragmentLifecycleCallbacks(fragmentLiKe, true)
             fragmentLiKes.forEach {
                 fm.registerFragmentLifecycleCallbacks(it, true)

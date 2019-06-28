@@ -3,8 +3,8 @@ package com.afirez.app.ui
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -108,7 +108,7 @@ class CustomRecyclerViewActivity : AppCompatActivity() {
         var removed: Boolean = false
     )
 
-    inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class Holder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
         val ivImg: ImageView = itemView.findViewById(R.id.ivImg)
 
@@ -116,7 +116,7 @@ class CustomRecyclerViewActivity : AppCompatActivity() {
             val position = adapterPosition
             val item = items.get(position)
             ivImg.setImageResource(item.img)
-            val params = itemView.layoutParams as RecyclerView.LayoutParams
+            val params = itemView.layoutParams as androidx.recyclerview.widget.RecyclerView.LayoutParams
             params.leftMargin = item.leftMargin
             params.topMargin = item.topMargin
             ivImg.scaleX = item.scale
@@ -144,7 +144,7 @@ class CustomRecyclerViewActivity : AppCompatActivity() {
 
     }
 
-    inner class Adapter : RecyclerView.Adapter<Holder>() {
+    inner class Adapter : androidx.recyclerview.widget.RecyclerView.Adapter<Holder>() {
         override fun onCreateViewHolder(parant: ViewGroup, viewType: Int): Holder {
             val inflater = LayoutInflater.from(this@CustomRecyclerViewActivity)
             val view = inflater.inflate(R.layout.item_green, parant, false)

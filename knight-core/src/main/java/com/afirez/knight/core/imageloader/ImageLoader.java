@@ -1,7 +1,7 @@
 package com.afirez.knight.core.imageloader;
 
 import android.content.Context;
-import android.support.annotation.DrawableRes;
+import androidx.annotation.DrawableRes;
 import android.util.SparseArray;
 import android.view.View;
 import com.afirez.knight.core.imageloader.glide.GlideImageLoader;

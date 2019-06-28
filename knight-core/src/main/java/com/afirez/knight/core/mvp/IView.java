@@ -1,6 +1,6 @@
 package com.afirez.knight.core.mvp;
 
-import android.support.annotation.StringRes;
+import androidx.annotation.StringRes;
 
 /**
  * Created by afirez on 2017/7/12.

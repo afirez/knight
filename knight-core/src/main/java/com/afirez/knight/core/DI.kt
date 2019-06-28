@@ -3,7 +3,7 @@ package com.afirez.knight.core
 import android.app.Application
 import android.content.Context
 import android.content.pm.ApplicationInfo
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.FragmentManager
 import com.afirez.knight.core.api.*
 import com.afirez.knight.core.imageloader.IImageLoader
 import com.afirez.knight.core.internal.*
@@ -28,8 +28,8 @@ val core = Kodein.Module("core") {
 //    bind(tag = "any") from setBinding<Any>()
     bind() from setBinding<AppLike>()
     bind<Application.ActivityLifecycleCallbacks>(tag = "internal") with singleton { ActivityLike() }
-    bind<FragmentManager.FragmentLifecycleCallbacks>(tag = "internal") with singleton { FragmentLike() }
-    bind() from setBinding<FragmentManager.FragmentLifecycleCallbacks>()
+    bind<androidx.fragment.app.FragmentManager.FragmentLifecycleCallbacks>(tag = "internal") with singleton { FragmentLike() }
+    bind() from setBinding<androidx.fragment.app.FragmentManager.FragmentLifecycleCallbacks>()
     bind() from setBinding<BuildGson>()
     bind() from setBinding<BuildOkHttpClient>()
     bind() from setBinding<BuildRetrofit>()

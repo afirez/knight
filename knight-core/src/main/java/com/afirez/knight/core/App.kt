@@ -2,7 +2,7 @@ package com.afirez.knight.core
 
 import android.app.Application
 import android.content.Context
-import android.support.multidex.MultiDex
+import androidx.multidex.MultiDex
 import com.afirez.knight.core.api.AppLike
 import com.afirez.knight.core.api.BuildKodein
 import org.kodein.di.Kodein

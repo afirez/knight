@@ -2,10 +2,15 @@ package com.afirez.app.ui.banner;
 
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.*;
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.*;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
+import androidx.recyclerview.widget.PagerSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 
 /**
  * Created by jameson on 8/30/16.

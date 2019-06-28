@@ -2,23 +2,21 @@ package com.afirez.app.ui
 
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.afirez.app.R
 import com.afirez.app.ui.banner.BannerAdapterHelper
 import com.afirez.app.ui.banner.BannerScaleHelper
-import com.leochuan.ScaleLayoutManager
 import com.yinglan.shadowimageview.ShadowImageView
 import kotlinx.android.synthetic.main.activity_recycler_banner.*
 import java.util.*
 
 class RecyclerBannerActivity : AppCompatActivity() {
 
-    lateinit var lm: RecyclerView.LayoutManager
+    lateinit var lm: androidx.recyclerview.widget.RecyclerView.LayoutManager
     lateinit var bannerScaleHelper: BannerScaleHelper
     lateinit var theBannerAdapter: BannerAdapter
 
@@ -66,7 +64,7 @@ class RecyclerBannerActivity : AppCompatActivity() {
         add(R.drawable.ic_mask)
     }
 
-    inner class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class VH(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
         //        val ivImage = itemView.findViewById<ImageView>(R.id.ivImg)
         val slShadow = itemView.findViewById<ShadowImageView>(R.id.slShadow)
@@ -90,7 +88,7 @@ class RecyclerBannerActivity : AppCompatActivity() {
 
     val bannerAdapterHelper: BannerAdapterHelper = BannerAdapterHelper()
 
-    inner class BannerAdapter : RecyclerView.Adapter<VH>() {
+    inner class BannerAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<VH>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, type: Int): VH {
             val context = parent.context

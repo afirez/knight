@@ -1,6 +1,6 @@
 package com.afirez.wav.api.audio;
 
-import android.support.v4.util.Pools;
+import androidx.core.util.Pools;
 
 /**
  * Created by afirez on 2018/3/23.

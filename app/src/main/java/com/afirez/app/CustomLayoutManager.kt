@@ -1,15 +1,15 @@
 package com.afirez.app
 
 import android.graphics.Rect
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.RecyclerView.LayoutParams
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.LayoutParams
 import android.view.View
 import android.view.ViewGroup
 
 class CustomLayoutManager : RecyclerView.LayoutManager() {
 
     override fun generateDefaultLayoutParams(): LayoutParams {
-        return RecyclerView.LayoutParams(
+        return LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
@@ -53,7 +53,7 @@ class CustomLayoutManager : RecyclerView.LayoutManager() {
                 addView(scrap)
                 val width = getDecoratedMeasuredWidth(scrap)
                 val height = getDecoratedMeasuredHeight(scrap)
-                val layoutParams = scrap.layoutParams as RecyclerView.LayoutParams
+                val layoutParams = scrap.layoutParams as LayoutParams
                 val left = layoutParams.leftMargin
                 val top = layoutParams.topMargin
                 val childRect = Rect(left - width, top, left, top + height)

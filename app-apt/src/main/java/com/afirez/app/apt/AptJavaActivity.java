@@ -1,6 +1,6 @@
 package com.afirez.app.apt;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import com.afirez.apt.api.HelloWorld;
