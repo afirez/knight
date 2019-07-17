@@ -1,89 +1,133 @@
 package com.afirez.app;
 
 import android.os.Bundle;
+import android.view.View;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LifecycleRegistry;
 
+import java.util.List;
+
 public class LazyFragment extends Fragment implements LifecycleObserver {
-    public static final String TAG = "LazyFragment";
 
-    protected String name;
-
-    private boolean isPageResume;
-
-    public static LazyFragment newInstance(String name) {
-        LazyFragment fragment = new LazyFragment();
-        fragment.name = name;
-        return fragment;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    private boolean isFragmentResumed;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getLifecycle().addObserver(this);
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        TextView view = new TextView(getContext());
-        view.setText(name);
-        return view;
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (getView() != null && !isFragmentResumed && !isHidden() && getUserVisibleHint()) {
+            getView().post(new Runnable() {
+                @Override
+                public void run() {
+                    dispatchResumed(true);
+                }
+            });
+        }
     }
 
     @Override
     public void onResume() {
-        Log.w(TAG, name + "==>onResume,isHidden=" + isHidden() + ",getUserVisibleHint=" + getUserVisibleHint());
-        if (!isPageResume && !isHidden() && getUserVisibleHint()) {
-            isPageResume = true;
-            onPageResume();
+        if (getView() != null && !isFragmentResumed && !isHidden() && getUserVisibleHint()) {
+            dispatchResumed(true);
         }
         super.onResume();
     }
 
     @Override
     public void onPause() {
-        Log.w(TAG, name + "==>onPause,isHidden=" + isHidden() + ",getUserVisibleHint=" + getUserVisibleHint());
-        if (isPageResume) {
-            isPageResume = false;
-            onPagePause();
+        if (isFragmentResumed) {
+            dispatchResumed(false);
         }
         super.onPause();
     }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
-        Log.w(TAG, name + "==>onHiddenChanged,isHidden=" + hidden + ",getUserVisibleHint=" + getUserVisibleHint());
-        if (hidden) {
-            if (isPageResume && getUserVisibleHint()) {
-                isPageResume = false;
-
-                handleEvent(Lifecycle.Event.ON_PAUSE);
-
-                onPagePause();
+        if (!hidden) {
+            if (getView() != null && !isFragmentResumed && getUserVisibleHint()) {
+                dispatchResumed(true);
             }
         } else {
-            if (!isPageResume && getUserVisibleHint()) {
-                isPageResume = true;
-
-                handleEvent(Lifecycle.Event.ON_RESUME);
-
-                onPageResume();
+            if (isFragmentResumed && getUserVisibleHint()) {
+                dispatchResumed(false);
             }
         }
         super.onHiddenChanged(hidden);
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        if (isVisibleToUser) {
+            if (getView() != null && !isFragmentResumed && !isHidden()) {
+                dispatchResumed(true);
+            }
+        } else {
+            if (isFragmentResumed && !isHidden()) {
+                dispatchResumed(false);
+            }
+        }
+
+        super.setUserVisibleHint(isVisibleToUser);
+    }
+
+    private void dispatchResumed(boolean resumed) {
+        if (resumed && isParentNotResumed()) {
+            return;
+        }
+
+        if (isFragmentResumed == resumed) {
+            return;
+        }
+
+        isFragmentResumed = resumed;
+
+        if (isFragmentResumed) {
+            handleEvent(Lifecycle.Event.ON_RESUME);
+            onFragmentResume();
+            childrenDispatchResumed(true);
+        } else {
+            handleEvent(Lifecycle.Event.ON_PAUSE);
+            onFragmentPause();
+            childrenDispatchResumed(false);
+        }
+    }
+
+    public boolean isFragmentResumed() {
+        return isFragmentResumed;
+    }
+
+    protected void onFragmentResume() {
+
+    }
+
+    protected void onFragmentPause() {
+
+    }
+
+    private boolean isParentNotResumed() {
+        Fragment parentFragment = getParentFragment();
+        if (parentFragment instanceof LazyFragment) {
+            LazyFragment parent = (LazyFragment) parentFragment;
+            return !parent.isFragmentResumed();
+        } else {
+            return false;
+        }
+    }
+
+    private void childrenDispatchResumed(boolean resumed) {
+        FragmentManager childFragmentManager = getChildFragmentManager();
+        List<Fragment> fragments = childFragmentManager.getFragments();
+        if (!fragments.isEmpty()) {
+            for (Fragment fragment : fragments) {
+                if (fragment instanceof LazyFragment) {
+                    ((LazyFragment) fragment).dispatchResumed(resumed);
+                }
+            }
+        }
     }
 
     private void handleEvent(Lifecycle.Event event) {
@@ -93,34 +137,14 @@ public class LazyFragment extends Fragment implements LifecycleObserver {
     }
 
     @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        Log.w(TAG, name + "==>setUserVisibleHint,isHidden=" + isHidden() + ",getUserVisibleHint=" + isVisibleToUser);
-        if (isVisibleToUser) {
-            if (!isPageResume && !isHidden()) {
-                isPageResume = true;
-
-                handleEvent(Lifecycle.Event.ON_RESUME);
-
-                onPageResume();
-            }
-        } else {
-            if (isPageResume && !isHidden()) {
-                isPageResume = false;
-
-                handleEvent(Lifecycle.Event.ON_PAUSE);
-
-                onPagePause();
-            }
-        }
-
-        super.setUserVisibleHint(isVisibleToUser);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getLifecycle().addObserver(this);
     }
 
-    protected void onPageResume() {
-        Log.w(TAG, name + "==>onPageResume");
-    }
-
-    protected void onPagePause() {
-        Log.w(TAG, name + "==>onPagePause");
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getLifecycle().removeObserver(this);
     }
 }

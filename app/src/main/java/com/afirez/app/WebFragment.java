@@ -90,14 +90,14 @@ public class WebFragment extends LazyFragment {
     }
 
     @Override
-    public void onPageResume() {
+    public void onFragmentResume() {
         mWebView.onResume();
-        super.onResume();
+        super.onFragmentResume();
     }
 
     @Override
-    public void onPagePause() {
-        super.onPause();
+    public void onFragmentPause() {
+        super.onFragmentPause();
         mWebView.onPause();
     }
 

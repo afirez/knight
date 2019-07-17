@@ -2,7 +2,6 @@ package com.afirez.knight.core.internal
 
 import android.app.Application
 import android.content.Context
-import com.afirez.knight.core.R
 import com.afirez.knight.core.api.AppLike
 import com.afirez.knight.core.appKodein
 import com.afirez.knight.core.imageloader.IImageLoader
@@ -11,9 +10,7 @@ import com.afirez.knight.core.isDebug
 import com.github.moduth.blockcanary.BlockCanary
 import com.tencent.bugly.crashreport.CrashReport
 import okhttp3.OkHttpClient
-import org.kodein.di.KodeinAware
 import org.kodein.di.generic.instance
-import timber.log.Timber
 import java.io.File
 
 internal class AppLikeImpl : AppLike {
