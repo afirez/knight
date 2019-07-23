@@ -18,13 +18,13 @@ class MotionChildLayout : FrameLayout {
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
 
-        Log.w("MotionChildLayout", "dispatchTouchEvent")
+        Log.w("MotionChildLayout@$tag", "dispatchTouchEvent")
 
         val consumed = super.dispatchTouchEvent(ev)
 
-        Log.w("MotionChildLayout", "dispatchTouchEvent consumed = $consumed")
+        Log.w("MotionChildLayout@$tag", "dispatchTouchEvent consumed = $consumed")
 
-        return consumed
+        return true
     }
 
     override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {
@@ -32,19 +32,19 @@ class MotionChildLayout : FrameLayout {
             return true
         }
 
-        Log.w("MotionChildLayout", "onInterceptTouchEvent")
+        Log.w("MotionChildLayout@$tag", "onInterceptTouchEvent")
         val intercepted = super.onInterceptTouchEvent(ev)
-        Log.w("MotionChildLayout", "onInterceptTouchEvent intercepted = $intercepted")
+        Log.w("MotionChildLayout@$tag", "onInterceptTouchEvent intercepted = $intercepted")
         return intercepted
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        Log.w("MotionChildLayout", "disallowIntercept = $disallowIntercept")
+        Log.w("MotionChildLayout@$tag", "disallowIntercept = $disallowIntercept")
         requestDisallowInterceptTouchEvent(disallowIntercept)
 
-        Log.w("MotionChildLayout", "onTouchEvent")
+        Log.w("MotionChildLayout@$tag", "onTouchEvent")
         val consumed = super.onTouchEvent(event)
-        Log.w("MotionChildLayout", "onTouchEvent consumed = $consumed")
+        Log.w("MotionChildLayout@$tag", "onTouchEvent consumed = $consumed")
         return consumed
     }
 }

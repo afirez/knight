@@ -31,7 +31,7 @@ public class LazyFragment extends Fragment implements LifecycleObserver {
 
     @Override
     public void onResume() {
-        if (getView() != null && !isFragmentResumed && !isHidden() && getUserVisibleHint()) {
+        if (!isFragmentResumed && !isHidden() && getUserVisibleHint()) {
             dispatchResumed(true);
         }
         super.onResume();
@@ -48,7 +48,7 @@ public class LazyFragment extends Fragment implements LifecycleObserver {
     @Override
     public void onHiddenChanged(boolean hidden) {
         if (!hidden) {
-            if (getView() != null && !isFragmentResumed && getUserVisibleHint()) {
+            if (!isFragmentResumed && getUserVisibleHint()) {
                 dispatchResumed(true);
             }
         } else {
@@ -62,7 +62,7 @@ public class LazyFragment extends Fragment implements LifecycleObserver {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         if (isVisibleToUser) {
-            if (getView() != null && !isFragmentResumed && !isHidden()) {
+            if (!isFragmentResumed && !isHidden()) {
                 dispatchResumed(true);
             }
         } else {
@@ -75,6 +75,10 @@ public class LazyFragment extends Fragment implements LifecycleObserver {
     }
 
     private void dispatchResumed(boolean resumed) {
+        if (resumed && !isVisible()) {
+            return;
+        }
+
         if (resumed && isParentNotResumed()) {
             return;
         }

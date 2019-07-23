@@ -17,8 +17,8 @@ class MotionEventActivity : AppCompatActivity() {
             parent.intercept = !parent.intercept
         }
 
-        findViewById<Button>(R.id.btnChildDisallowIntercept).setOnClickListener {
-            val child = findViewById<MotionChildLayout>(R.id.child)
+        findViewById<Button>(R.id.btnDisallowParentIntercept).setOnClickListener {
+            val child = findViewById<MotionChildLayout>(R.id.child1)
             child.disallowIntercept = !child.disallowIntercept
         }
     }
@@ -26,11 +26,11 @@ class MotionEventActivity : AppCompatActivity() {
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
 
-        Log.w("MotionEventActivity", "dispatchTouchEvent")
+//        Log.w("MotionEventActivity", "dispatchTouchEvent")
 
         val consumed = super.dispatchTouchEvent(ev)
 
-        Log.w("MotionEventActivity", "dispatchTouchEvent consumed = $consumed")
+//        Log.w("MotionEventActivity", "dispatchTouchEvent consumed = $consumed")
 
         return consumed
     }
@@ -38,11 +38,11 @@ class MotionEventActivity : AppCompatActivity() {
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
 
-        Log.w("MotionEventActivity", "onTouchEvent")
+//        Log.w("MotionEventActivity", "onTouchEvent")
 
         val consumed = super.onTouchEvent(event)
 
-        Log.w("MotionEventActivity", "onTouchEvent consumed = $consumed")
+//        Log.w("MotionEventActivity", "onTouchEvent consumed = $consumed")
 
         return consumed
     }

@@ -4,9 +4,14 @@ import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
+import android.view.View
+import android.view.ViewGroup
 import android.widget.FrameLayout
+import java.util.ArrayList
 
 class MotionParentLayout : FrameLayout {
+
+    val touchTarget = Class.forName("android.view.ViewGroup\$TouchTarget")
 
     var intercept = false
 
@@ -24,6 +29,37 @@ class MotionParentLayout : FrameLayout {
         val consumed = super.dispatchTouchEvent(ev)
 
         Log.w("MotionParentLayout", "dispatchTouchEvent consumed = $consumed")
+
+        try {
+
+            val field = ViewGroup::class.java.getDeclaredField("mFirstTouchTarget")
+            val childField = touchTarget.getDeclaredField("child") ?: null
+            val nextField = touchTarget.getDeclaredField("next") ?: null
+
+            field.isAccessible = true
+            childField?.isAccessible = true
+            nextField?.isAccessible = true
+
+            val mFirstTouchTarget = field.get(this)
+
+            var p = mFirstTouchTarget
+
+            while (p != null) {
+                var child = childField?.get(p)
+                Log.w("MotionParentLayout", "child = $child")
+                p = nextField?.get(p)
+            }
+
+
+            val m = ViewGroup::class.java.getDeclaredMethod("buildOrderedChildList")
+            m.isAccessible = true
+            val preorderedList: ArrayList<View> = m.invoke(this) as ArrayList<View>
+            Log.w("MotionParentLayout", "$preorderedList")
+
+
+        } catch (e: Throwable) {
+            e.printStackTrace()
+        }
 
         return consumed
     }

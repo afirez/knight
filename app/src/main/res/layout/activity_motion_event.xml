@@ -17,15 +17,25 @@
             android:layout_height="0dp">
 
         <com.afirez.app.ui.MotionChildLayout
-                android:id="@+id/child"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_width="0dp"
-                android:layout_height="0dp">
+                android:tag="child1"
+                android:id="@+id/child1"
+                android:layout_width="350dp"
+                android:background="#FF0000"
+                android:layout_gravity="left"
+                android:layout_height="match_parent">
 
         </com.afirez.app.ui.MotionChildLayout>
+
+        <com.afirez.app.ui.MotionChildLayout
+                android:tag="child2"
+                android:id="@+id/child2"
+                android:background="#00000000"
+                android:layout_width="350dp"
+                android:layout_gravity="right"
+                android:layout_height="match_parent">
+
+        </com.afirez.app.ui.MotionChildLayout>
+
 
     </com.afirez.app.ui.MotionParentLayout>
 
@@ -34,12 +44,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             android:id="@+id/btnParentIntercept"
-            android:layout_width="100dp"
+            android:text="ParentIntercept"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     <Button
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/btnParentIntercept"
-            android:id="@+id/btnChildDisallowIntercept"
-            android:layout_width="100dp"
+            android:id="@+id/btnDisallowParentIntercept"
+            android:text="DisallowParentIntercept"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
