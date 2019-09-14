@@ -20,6 +20,13 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+            <Button
+                    android:text="OpenGl ES"
+                    android:id="@+id/btnOpenGlES"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
             <Button
                     android:text="Triangle"
                     android:id="@+id/btnTriangle"

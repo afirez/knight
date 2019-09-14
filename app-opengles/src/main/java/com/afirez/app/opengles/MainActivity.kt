@@ -10,6 +10,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        btnOpenGlES.setOnClickListener {
+            startActivity(Intent(this@MainActivity, OpenGlESActivity::class.java))
+        }
+
         btnTriangle.setOnClickListener {
             startActivity(Intent(this@MainActivity, TriangleActivity::class.java))
         }

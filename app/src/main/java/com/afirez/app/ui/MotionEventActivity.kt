@@ -1,5 +1,6 @@
 package com.afirez.app.ui
 
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
@@ -9,9 +10,17 @@ import com.afirez.app.R
 
 class MotionEventActivity : AppCompatActivity() {
 
+    companion object {
+        var ctx: Context? = null
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_motion_event)
+
+//        ctx = this
+
         findViewById<Button>(R.id.btnParentIntercept).setOnClickListener {
             val parent = findViewById<MotionParentLayout>(R.id.parent)
             parent.intercept = !parent.intercept
